@@ -29,7 +29,7 @@
 
 /* --- RESET -------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 body {
     font-family: var(--f-sans);
     background: var(--navy);
@@ -187,7 +187,7 @@ button { cursor: pointer; border: none; background: none; }
 }
 .hero-brand {
     font-family: var(--f-serif);
-    font-size: clamp(7rem, 22vw, 18rem);
+    font-size: clamp(4.5rem, 22vw, 18rem);
     font-weight: 700;
     line-height: 0.82;
     letter-spacing: -0.04em;
@@ -487,17 +487,19 @@ button { cursor: pointer; border: none; background: none; }
 }
 .privados-bg {
     position: absolute;
-    right: -4%;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     font-family: var(--f-serif);
-    font-size: clamp(10rem, 22vw, 26rem);
+    font-size: clamp(8rem, 22vw, 26rem);
     font-weight: 700;
     color: rgba(255,255,255,0.04);
     line-height: 1;
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
 }
 .privados-inner {
     position: relative;
@@ -568,22 +570,31 @@ button { cursor: pointer; border: none; background: none; }
     font-style: italic;
 }
 
-/* --- PASEOS AERIAL ------------------------------------ */
-.paseos-aerial {
-    width: 100%;
-    height: clamp(340px, 50vw, 620px);
+/* --- PASEOS MEDIA ------------------------------------- */
+.paseos-media {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: var(--gap);
+    height: clamp(420px, 55vw, 680px);
     margin-bottom: 32px;
     border-radius: 2px;
     overflow: hidden;
 }
-.paseos-aerial img {
+.paseos-media-video,
+.paseos-media-img { overflow: hidden; }
+.paseos-media-video video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+}
+.paseos-media-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
     transition: transform 0.7s var(--ease);
 }
-.paseos-aerial:hover img { transform: scale(1.02); }
+.paseos-media-img:hover img { transform: scale(1.03); }
 
 /* --- PRIVADOS MEDIA ----------------------------------- */
 .privados-media {
@@ -811,7 +822,7 @@ button { cursor: pointer; border: none; background: none; }
     .nav-link { font-size: 1.1rem; letter-spacing: 0.1em; }
     .nav-cta { padding: 12px 28px; }
 
-.prices-band { grid-template-columns: repeat(2, 1fr); }
+    .prices-band { grid-template-columns: repeat(2, 1fr); }
     .price-cell:nth-child(2) { border-right: none; }
     .price-cell:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
     .price-cell:nth-child(4) { border-right: none; border-top: 1px solid var(--border); }
@@ -821,7 +832,11 @@ button { cursor: pointer; border: none; background: none; }
     .privados-media { grid-template-columns: 1fr 1fr; }
     .privados-media-item:first-child { grid-column: span 2; }
 
-.ps-row { height: 160px; }
+    .paseos-media { grid-template-columns: 1fr; height: auto; }
+    .paseos-media-video { height: 260px; }
+    .paseos-media-img   { height: 380px; }
+
+    .ps-row { height: 160px; }
     .ps-main { height: 260px; }
 
     .footer-top { grid-template-columns: 1fr; gap: 28px; }
@@ -851,4 +866,5 @@ button { cursor: pointer; border: none; background: none; }
     .ps-sm { height: 160px; }
 
     .hero-pills { display: none; }
+    .btn-wa { white-space: normal; text-align: center; }
 }
