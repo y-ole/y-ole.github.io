@@ -3,409 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Y-Olé Catamarán – Paseos de 45 minutos por la bahía de Cartagena sin reserva previa. Vive el Mediterráneo desde el agua.">
-    <meta property="og:title" content="Y-Olé Catamarán | Cartagena, España">
-    <meta property="og:description" content="Paseos en catamarán por la bahía de Cartagena. Sin reserva previa. 45 minutos de pura aventura mediterránea.">
+    <meta name="description" content="Y-Olé Catamarán – Paseos por la bahía de Cartagena. 97 pasajeros. Salidas todo el año. Puerto de Cartagena, Murcia.">
+    <meta property="og:title" content="Y-Olé Catamarán | Cartagena">
+    <meta property="og:description" content="Paseos en catamarán por la bahía de Cartagena. 45 minutos sin reserva o salidas especiales de 3 horas. Hasta 97 pasajeros.">
     <meta property="og:type" content="website">
-    <title>Y-Olé Catamarán | Paseos en la Bahía de Cartagena</title>
+    <title>Y-Olé Catamarán | Cartagena</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛵</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ===== NAVIGATION ===== -->
+    <!-- ===== NAV ===== -->
     <nav class="navbar" id="navbar">
-        <div class="nav-container">
+        <div class="nav-inner">
             <a href="#inicio" class="nav-logo">
-                <div class="logo-name">
-                    <span class="logo-y">Y</span><span class="logo-dash">-</span><span class="logo-ole">Olé</span>
-                </div>
-                <span class="logo-tagline">Catamarán · Cartagena</span>
+                <span class="logo-y">Y</span><span class="logo-dash">-</span><span class="logo-ole">Olé</span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-                <span class="toggle-bar"></span>
-                <span class="toggle-bar"></span>
-                <span class="toggle-bar"></span>
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-                <li><a href="#rutas" class="nav-link">Rutas</a></li>
-                <li><a href="#precios" class="nav-link">Precios</a></li>
-                <li><a href="#reservas" class="nav-link">Reservas</a></li>
+                <li><a href="#paseos" class="nav-link">Paseos diarios</a></li>
+                <li><a href="#especiales" class="nav-link">Salidas especiales</a></li>
+                <li><a href="#privados" class="nav-link">Eventos privados</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li>
+                    <a href="https://wa.me/34611868833" class="nav-link nav-cta" target="_blank" rel="noopener noreferrer">
+                        WhatsApp
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
+    <!-- ===== HERO ===== -->
+    <section id="inicio" class="hero">
+        <div class="hero-video-wrap">
+            <video class="hero-video" autoplay muted loop playsinline preload="auto">
+                <source src="video/hero%20portada.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">CARTAGENA · MAR</div>
+            <h1 class="hero-brand">Y-Olé</h1>
+            <p class="hero-sub">Catamarán</p>
+            <div class="hero-gap" aria-hidden="true"></div>
+            <div class="hero-pills">
+                <span class="hero-pill">⚓ 97 pasajeros</span>
+                <span class="hero-pill">🌊 Salidas todo el año</span>
+                <span class="hero-pill">🏊 Zona de baño</span>
+            </div>
+            <a href="#paseos" class="hero-scroll-cta">
+                <span>Explorar</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
     <main>
 
-        <!-- ===== HERO ===== -->
-        <section id="inicio" class="hero">
-            <div class="hero-decorations" aria-hidden="true">
-                <div class="hero-circle hero-circle--1"></div>
-                <div class="hero-circle hero-circle--2"></div>
-                <div class="hero-circle hero-circle--3"></div>
-            </div>
-            <div class="container hero-content">
-                <div class="hero-badge">⚓ Cartagena, Mediterráneo</div>
-                <h1 class="hero-brand">Y-Olé</h1>
-                <p class="hero-tagline">
-                    Vive la bahía de Cartagena<br>
-                    <em>desde el agua</em>
+        <!-- ===== PASEOS DIARIOS ===== -->
+        <section id="paseos" class="section paseos">
+            <div class="container">
+                <div class="section-label" data-animate>Paseos diarios</div>
+                <h2 class="section-title" data-animate data-delay="80">
+                    La bahía de Cartagena<br><em>desde el agua</em>
+                </h2>
+                <p class="section-lead" data-animate data-delay="160">
+                    45 minutos navegando por uno de los puertos más espectaculares del Mediterráneo.
+                    Sin reserva previa. Sube a bordo directamente en la caseta del embarcadero.
                 </p>
-                <p class="hero-sub">Paseos en catamarán · 45 minutos · Sin reserva previa</p>
-                <div class="hero-cta">
-                    <a href="#rutas" class="btn btn-white">Descubre las rutas</a>
-                    <a href="#precios" class="btn btn-outline-white">Ver precios</a>
+
+                <div class="prices-band" data-animate data-delay="220">
+                    <div class="price-cell">
+                        <span class="pc-label">Adulto</span>
+                        <span class="pc-amount">8<sup>€</sup></span>
+                    </div>
+                    <div class="price-cell">
+                        <span class="pc-label">Senior / Joven</span>
+                        <span class="pc-amount">6<sup>€</sup></span>
+                    </div>
+                    <div class="price-cell">
+                        <span class="pc-label">Niño (3 – 9 años)</span>
+                        <span class="pc-amount">2<sup>€</sup></span>
+                    </div>
+                    <div class="price-cell">
+                        <span class="pc-label">Menor de 3 años</span>
+                        <span class="pc-amount pc-free">Gratis</span>
+                    </div>
                 </div>
-                <div class="hero-scroll-hint" aria-hidden="true">
-                    <span>Desplázate para saber más</span>
-                    <div class="scroll-arrow"></div>
+
+                <div class="meta-row" data-animate data-delay="280">
+                    <div class="meta-chip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        45 minutos
+                    </div>
+                    <div class="meta-chip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Puerto de Cartagena
+                    </div>
+                    <div class="meta-chip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Todo el año
+                    </div>
+                    <div class="meta-chip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        Sin reserva previa
+                    </div>
                 </div>
-            </div>
-            <div class="hero-wave" aria-hidden="true">
-                <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0,80L60,72C120,64,240,48,360,46C480,44,600,56,720,64C840,72,960,72,1080,64C1200,56,1320,44,1380,38L1440,32L1440,100L0,100Z" fill="#ffffff"/>
-                </svg>
+
+                <div class="paseos-aerial" data-animate data-delay="340">
+                    <img src="img/ruta45minutosaerea.jpg" alt="Vista aérea de la ruta de 45 minutos por la bahía de Cartagena" loading="lazy">
+                </div>
+
+                <p class="paseos-footer-note" data-animate>
+                    Venta de entradas en la <strong>caseta del embarcadero</strong> · Puerto de Cartagena · Efectivo y tarjeta
+                </p>
             </div>
         </section>
 
-        <!-- ===== FEATURES ===== -->
-        <section class="features">
+        <!-- ===== SALIDAS ESPECIALES ===== -->
+        <section id="especiales" class="section especiales">
             <div class="container">
-                <div class="features-grid">
-                    <div class="feature-card" data-animate="fade-up">
-                        <span class="feature-icon">⚓</span>
-                        <h3>Sin reserva previa</h3>
-                        <p>Ven directamente al embarcadero y sube a bordo. Salidas frecuentes durante todo el día.</p>
-                    </div>
-                    <div class="feature-card" data-animate="fade-up" data-delay="100">
-                        <span class="feature-icon">🌊</span>
-                        <h3>45 minutos</h3>
-                        <p>La duración perfecta para descubrir lo mejor de la bahía de Cartagena.</p>
-                    </div>
-                    <div class="feature-card" data-animate="fade-up" data-delay="200">
-                        <span class="feature-icon">☀️</span>
-                        <h3>Todo el año</h3>
-                        <p>El privilegiado clima mediterráneo nos permite navegar durante todos los meses.</p>
-                    </div>
-                    <div class="feature-card" data-animate="fade-up" data-delay="300">
-                        <span class="feature-icon">👨‍👩‍👧</span>
-                        <h3>Para toda la familia</h3>
-                        <p>Seguro y divertido para mayores y pequeños. Los bebés viajan gratis.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <div class="especiales-grid">
+                    <div class="especiales-left">
+                        <div class="section-label" data-animate>Salidas especiales</div>
+                        <h2 class="section-title" data-animate data-delay="80">
+                            Tres horas en<br><em>alta mar</em>
+                        </h2>
+                        <p class="section-lead" data-animate data-delay="160">
+                            Una experiencia más intensa: navegación prolongada por la bahía de Cartagena
+                            con parada para baño en aguas cristalinas del Mediterráneo.
+                        </p>
 
-        <!-- ===== ROUTES ===== -->
-        <section id="rutas" class="routes">
-            <div class="container">
-                <div class="section-header" data-animate="fade-up">
-                    <span class="section-tag">Nuestras rutas</span>
-                    <h2>Paseos por la bahía</h2>
-                    <p>Descubre los rincones más espectaculares de Cartagena desde el Mediterráneo</p>
-                </div>
-                <div class="route-card" data-animate="fade-up">
-                    <div class="route-visual">
-                        <div class="route-visual-inner">
-                            <span class="route-icon-big">⛵</span>
-                            <div class="route-waves" aria-hidden="true">
-                                <div class="wave w1"></div>
-                                <div class="wave w2"></div>
-                                <div class="wave w3"></div>
+                        <div class="prices-band prices-band--2col" data-animate data-delay="220">
+                            <div class="price-cell">
+                                <span class="pc-label">Adulto</span>
+                                <span class="pc-amount">20<sup>€</sup></span>
+                            </div>
+                            <div class="price-cell">
+                                <span class="pc-label">Jubilado / Adolescente</span>
+                                <span class="pc-amount">15<sup>€</sup></span>
+                            </div>
+                            <div class="price-cell">
+                                <span class="pc-label">Niño</span>
+                                <span class="pc-amount">10<sup>€</sup></span>
+                            </div>
+                            <div class="price-cell">
+                                <span class="pc-label">Menor de 3 años</span>
+                                <span class="pc-amount pc-free">Gratis</span>
                             </div>
                         </div>
-                        <div class="route-visual-badge">⭐ Más popular</div>
-                    </div>
-                    <div class="route-info">
-                        <div class="route-meta">
-                            <span class="route-meta-item">⏱ 45 minutos</span>
-                            <span class="route-meta-item">🚫 Sin reserva previa</span>
-                            <span class="route-meta-item">📍 Puerto de Cartagena</span>
+
+                        <div class="meta-row" data-animate data-delay="260">
+                            <div class="meta-chip">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                3 horas
+                            </div>
+                            <div class="meta-chip">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Puerto de Cartagena
+                            </div>
+                            <div class="meta-chip">🏊 Baño incluido</div>
                         </div>
-                        <h3>Paseo por la bahía de Cartagena</h3>
-                        <p>Embárcate en una aventura mediterránea única. A bordo de nuestro catamarán explorarás la espectacular bahía de Cartagena contemplando el puerto histórico, el casco antiguo, los castillos y las aguas cristalinas del Mediterráneo.</p>
-                        <p>No hace falta planificar con antelación: ven cuando quieras y sube a bordo. Nuestro equipo te recibirá con una sonrisa.</p>
-                        <ul class="route-highlights">
-                            <li><span class="check-icon">✓</span> Puerto histórico de Cartagena</li>
-                            <li><span class="check-icon">✓</span> Vistas panorámicas al casco antiguo</li>
-                            <li><span class="check-icon">✓</span> Castillo de la Concepción</li>
-                            <li><span class="check-icon">✓</span> Faro de Navidad</li>
-                            <li><span class="check-icon">✓</span> Aguas cristalinas mediterráneas</li>
-                            <li><span class="check-icon">✓</span> Guía a bordo incluido</li>
-                        </ul>
-                        <a href="#precios" class="btn btn-primary">Ver precios</a>
+
+                        <div class="reserva-card" data-animate data-delay="320">
+                            <p class="reserva-label">Reserva por teléfono o WhatsApp</p>
+                            <a href="tel:+34611868833" class="reserva-phone">611 868 833</a>
+                            <a href="https://wa.me/34611868833" class="btn-wa" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                                </svg>
+                                Reservar por WhatsApp
+                            </a>
+                            <!--
+                            ================================================================
+                            SISTEMA DE RESERVA ONLINE — PENDIENTE DE INTEGRACIÓN
+                            ================================================================
+                            Cuando se integre un sistema de reservas (Bookeo, Regiondo,
+                            FareHarbor u otro), añadir aquí el widget o iframe.
+
+                            OPCIÓN A — Widget JavaScript:
+                                <script>
+                                    var __booking_config = { productId: "TU_ID", lang: "es" };
+                                </script>
+                                <script src="URL_DEL_PROVEEDOR/widget.js" async></script>
+                                <div id="booking-widget"></div>
+
+                            OPCIÓN B — iFrame:
+                                <iframe
+                                    src="URL_DEL_PROVEEDOR?lang=es"
+                                    width="100%" height="700"
+                                    frameborder="0" scrolling="auto"
+                                    title="Reserva salida especial Y-Olé">
+                                </iframe>
+
+                            Eliminar el bloque .reserva-card cuando el widget esté operativo.
+                            ================================================================
+                            -->
+                        </div>
+                    </div>
+
+                    <div class="especiales-right" data-animate data-delay="200">
+                        <div class="photo-stack">
+                            <div class="ps-main">
+                                <img src="img/baño1.jpg" alt="Zona de baño en la bahía de Cartagena" loading="lazy">
+                            </div>
+                            <div class="ps-row">
+                                <div class="ps-sm">
+                                    <img src="img/baño2.jpg" alt="Baño en aguas cristalinas mediterráneas" loading="lazy">
+                                </div>
+                                <div class="ps-sm">
+                                    <img src="img/baño3.jpg" alt="Parada de baño durante la salida especial" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== SALIDAS DE VERANO ===== -->
-        <section id="verano" class="summer">
+        <!-- ===== EVENTOS PRIVADOS ===== -->
+        <section id="privados" class="section privados">
+            <div class="privados-bg" aria-hidden="true">Y-Olé</div>
             <div class="container">
-                <div class="section-header" data-animate="fade-up">
-                    <span class="section-tag">Salidas de Verano</span>
-                    <h2>Navega, báñate y vive el Mediterráneo</h2>
-                    <p>En verano nuestros paseos incluyen parada para baño en aguas cristalinas de la bahía</p>
-                </div>
-                <div class="summer-grid">
-                    <div class="summer-info" data-animate="fade-left">
-                        <p class="summer-intro">Una experiencia única: recorremos la bahía de Cartagena a bordo y hacemos una parada especial para que te lances al agua. Las aguas mediterráneas en verano son cálidas, tranquilas y de una claridad espectacular.</p>
-                        <ul class="summer-features">
-                            <li>
-                                <span class="summer-feat-icon">🏊</span>
-                                <div>
-                                    <strong>Baño incluido</strong>
-                                    <span>Parada en un punto de baño en plena bahía</span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="summer-feat-icon">⏱</span>
-                                <div>
-                                    <strong>Paseo ampliado</strong>
-                                    <span>Más tiempo en el agua para disfrutar al máximo</span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="summer-feat-icon">🌅</span>
-                                <div>
-                                    <strong>Paisajes únicos</strong>
-                                    <span>Vistas privilegiadas de Cartagena desde el mar</span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="summer-feat-icon">👨‍👩‍👧</span>
-                                <div>
-                                    <strong>Ideal para familias</strong>
-                                    <span>Una aventura que todos recordarán</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <a href="#precios" class="btn btn-primary">Ver tarifas</a>
+                <div class="privados-inner">
+                    <div class="privados-left">
+                        <div class="section-label section-label--dim" data-animate>Eventos privados</div>
+                        <h2 class="section-title" data-animate data-delay="80">
+                            El catamarán,<br><em>solo para vosotros</em>
+                        </h2>
+                        <p class="section-lead" data-animate data-delay="160">
+                            Hasta 97 pasajeros. Celebraciones, despedidas, teambuilding, rutas a medida.
+                            Cada propuesta es única y se estudia individualmente.
+                        </p>
+                        <div class="priv-stats" data-animate data-delay="220">
+                            <div class="priv-stat">
+                                <span class="ps-n">97</span>
+                                <span class="ps-l">personas máximo</span>
+                            </div>
+                            <div class="priv-stat">
+                                <span class="ps-n">360°</span>
+                                <span class="ps-l">personalización</span>
+                            </div>
+                            <div class="priv-stat">
+                                <span class="ps-n">12</span>
+                                <span class="ps-l">meses disponibles</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="summer-video-wrapper" data-animate="fade-right">
-                        <video
-                            class="summer-video"
-                            controls
-                            preload="metadata"
-                            playsinline>
-                            <source src="VID-20250629-WA0170.mp4" type="video/mp4">
-                            Tu navegador no soporta la reproducción de vídeo.
+                    <div class="privados-right" data-animate data-delay="200">
+                        <p class="priv-contact-intro">Solicitudes por correo electrónico:</p>
+                        <a href="mailto:info@yolecatamaran.es" class="priv-email">info@yolecatamaran.es</a>
+                        <p class="priv-note">
+                            Estudiamos cada propuesta y respondemos por correo en el menor tiempo posible.
+                            No hay formulario: escríbenos directamente.
+                        </p>
+                    </div>
+                </div>
+                <div class="privados-media" data-animate data-delay="160">
+                    <div class="privados-media-item">
+                        <video autoplay muted loop playsinline preload="metadata">
+                            <source src="video/heroeventos.mp4" type="video/mp4">
                         </video>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PRICES ===== -->
-        <section id="precios" class="prices">
-            <div class="container">
-                <div class="section-header" data-animate="fade-up">
-                    <span class="section-tag">Tarifas</span>
-                    <h2>Precios claros y transparentes</h2>
-                    <p>Sin sorpresas ni costes ocultos. Paga a bordo o en el embarcadero.</p>
-                </div>
-                <div class="prices-grid">
-                    <div class="price-card" data-animate="fade-up">
-                        <span class="price-icon">🧑</span>
-                        <h3 class="price-title">Adulto</h3>
-                        <div class="price-amount">
-                            <span class="price-currency">€</span>
-                            <span class="price-number">8</span>
-                        </div>
-                        <p class="price-per">por persona · paseo de 45 min</p>
-                        <ul class="price-features">
-                            <li>Paseo completo por la bahía</li>
-                            <li>Guía a bordo</li>
-                            <li>Sin reserva previa</li>
-                            <li>Chaleco salvavidas incluido</li>
-                        </ul>
-                        <a href="#reservas" class="btn btn-primary btn-full">Reservar</a>
+                    <div class="privados-media-item">
+                        <img src="img/evento.jpg" alt="Evento privado a bordo del catamarán Y-Olé" loading="lazy">
                     </div>
-                    <div class="price-card" data-animate="fade-up" data-delay="100">
-                        <span class="price-icon">👴</span>
-                        <h3 class="price-title">Jubilados y adolescentes</h3>
-                        <div class="price-amount">
-                            <span class="price-currency">€</span>
-                            <span class="price-number">6</span>
-                        </div>
-                        <p class="price-per">por persona · paseo de 45 min</p>
-                        <ul class="price-features">
-                            <li>Paseo completo por la bahía</li>
-                            <li>Guía a bordo</li>
-                            <li>Sin reserva previa</li>
-                            <li>Chaleco salvavidas incluido</li>
-                        </ul>
-                        <a href="#reservas" class="btn btn-primary btn-full">Reservar</a>
-                    </div>
-                    <div class="price-card" data-animate="fade-up" data-delay="200">
-                        <span class="price-icon">🎈</span>
-                        <h3 class="price-title">Niño</h3>
-                        <div class="price-amount">
-                            <span class="price-currency">€</span>
-                            <span class="price-number">2</span>
-                        </div>
-                        <p class="price-per">3 a 9 años · paseo de 45 min</p>
-                        <ul class="price-features">
-                            <li>Paseo completo por la bahía</li>
-                            <li>Guía a bordo</li>
-                            <li>Sin reserva previa</li>
-                            <li>Chaleco salvavidas incluido</li>
-                        </ul>
-                        <a href="#reservas" class="btn btn-primary btn-full">Reservar</a>
-                    </div>
-                    <div class="price-card" data-animate="fade-up" data-delay="300">
-                        <span class="price-icon">👶</span>
-                        <h3 class="price-title">Menor de 3 años</h3>
-                        <div class="price-amount">
-                            <span class="price-free">Gratis</span>
-                        </div>
-                        <p class="price-per">0 a 2 años · en brazos</p>
-                        <ul class="price-features">
-                            <li>Paseo completo por la bahía</li>
-                            <li>Guía a bordo</li>
-                            <li>Sin reserva previa</li>
-                            <li>Máxima seguridad a bordo</li>
-                        </ul>
-                        <a href="#reservas" class="btn btn-primary btn-full">Reservar</a>
-                    </div>
-                </div>
-                <div class="prices-note" data-animate="fade-up">
-                    <div class="note-item"><span>💳</span><span>Aceptamos efectivo y tarjeta de crédito</span></div>
-                    <div class="note-item"><span>🎟️</span><span>Grupos y colegios: consulta precios especiales</span></div>
-                    <div class="note-item"><span>🛥️</span><span>Contratación privada del catamarán disponible</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== BOOKEO / RESERVAS ===== -->
-        <!--
-        ================================================================
-        INTEGRACIÓN BOOKEO — INSTRUCCIONES
-        ================================================================
-        Cuando estés listo para integrar Bookeo:
-
-        1. Accede a tu cuenta en https://www.bookeo.com
-        2. Ve a: Settings → Widget & API → Get Widget Code
-        3. Copia tu ID de cuenta y el ID de producto
-
-        OPCIÓN A — Widget JavaScript (recomendado):
-        Reemplaza el div#bookeo-widget con:
-
-            <script>
-                var __bookeo_config = {
-                    productId: "TU_PRODUCT_ID",
-                    type: "standard",
-                    language: "es-ES"
-                };
-            </script>
-            <script src="https://bookeo.com/widget.js" async></script>
-            <div id="bookeo-widget"></div>
-
-        OPCIÓN B — iFrame:
-            <iframe
-                src="https://bookeo.com/TU_CUENTA?type=1&lang=es-ES"
-                width="100%" height="700"
-                frameborder="0" scrolling="auto"
-                title="Reserva tu paseo en catamarán">
-            </iframe>
-
-        También elimina el div.bookeo-placeholder y su contenido.
-        ================================================================
-        -->
-        <section id="reservas" class="bookeo-section">
-            <div class="container">
-                <div class="section-header" data-animate="fade-up">
-                    <span class="section-tag">Reservas online</span>
-                    <h2>Reserva tu plaza</h2>
-                    <p>Próximamente podrás reservar online. Por ahora, ven directamente al embarcadero o llámanos.</p>
-                </div>
-                <div id="bookeo-widget" class="bookeo-placeholder" data-animate="fade-up">
-                    <span class="bookeo-icon">🗓️</span>
-                    <h3>Sistema de reservas — Próximamente</h3>
-                    <p>Estamos preparando nuestro sistema de reservas online. Mientras tanto, no necesitas reservar: ¡ven directamente al embarcadero y sube a bordo!</p>
-                    <div class="bookeo-cta">
-                        <a href="tel:+34600000000" class="btn btn-primary">📞 Llámanos</a>
-                        <a href="#contacto" class="btn btn-outline">Más información</a>
+                    <div class="privados-media-item">
+                        <img src="img/eventonocturno.jpg" alt="Evento nocturno en el catamarán Y-Olé" loading="lazy">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== CONTACT ===== -->
-        <section id="contacto" class="contact">
+        <!-- ===== GALERÍA HORIZONTAL ===== -->
+        <div class="strip-wrap" aria-label="Galería de imágenes">
+            <div class="strip" id="galleryStrip">
+                <div class="strip-item"><img src="img/IMG20250827134203.jpg" alt="Y-Olé Catamarán" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG20250827134220.jpg" alt="Bahía de Cartagena" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG20250827135036.jpg" alt="Puerto de Cartagena" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG20250827134141.jpg" alt="Zona de baño en la bahía" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250717-WA0005.jpg" alt="Mediterráneo desde el catamarán" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250717-WA0006.jpg" alt="Bahía mediterránea" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250717-WA0007.jpg" alt="Y-Olé navegando" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250717-WA0008.jpg" alt="Cartagena desde el mar" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250717-WA0009.jpg" alt="Paseo en catamarán" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250717-WA0010.jpg" alt="Aguas mediterráneas" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250717-WA0011.jpg" alt="Catamarán Y-Olé en verano" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG20250802202108.jpg" alt="A bordo del catamarán" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG20250802202703.jpg" alt="Bahía de Cartagena verano" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250629-WA0123.jpg" alt="Salida de verano Y-Olé" loading="lazy"></div>
+                <div class="strip-item"><img src="img/cortinayole.jpg" alt="Y-Olé Catamarán" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250914-WA0002.jpg" alt="Otoño en el catamarán" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20260418-WA0002.jpg" alt="Y-Olé primavera 2026" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20260418-WA0003.jpg" alt="Catamarán en Cartagena" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20251105-WA0001.jpg" alt="Otoño en la bahía" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20260131-WA0000.jpg" alt="Invierno en el catamarán" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG_20251223_180646.jpg" alt="Y-Olé en diciembre" loading="lazy"></div>
+                <div class="strip-item"><img src="img/IMG-20250329-WA0010.jpg" alt="Primavera en la bahía" loading="lazy"></div>
+            </div>
+        </div>
+
+        <!-- ===== CONTACTO ===== -->
+        <section id="contacto" class="section contact">
             <div class="container">
-                <div class="section-header" data-animate="fade-up">
-                    <span class="section-tag">Dónde encontrarnos</span>
-                    <h2>Visítanos en el puerto</h2>
+                <div class="section-label" data-animate>Contacto</div>
+                <h2 class="section-title" data-animate data-delay="80">Estamos en el puerto</h2>
+
+                <div class="contact-grid" data-animate data-delay="160">
+                    <div class="contact-card">
+                        <div class="cc-icon">📍</div>
+                        <h4>Dónde encontrarnos</h4>
+                        <p>Caseta del embarcadero<br>Puerto de Cartagena, Murcia</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="cc-icon">🕐</div>
+                        <h4>Horario de salidas</h4>
+                        <p>Todos los días<br>11:00 – 19:00 h</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="cc-icon">📞</div>
+                        <h4>Teléfono / WhatsApp</h4>
+                        <p><a href="tel:+34611868833">611 868 833</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="cc-icon">📧</div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:info@yolecatamaran.es">info@yolecatamaran.es</a></p>
+                    </div>
                 </div>
-                <div class="contact-grid">
-                    <div class="contact-info" data-animate="fade-left">
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div class="contact-details">
-                                <h4>Ubicación</h4>
-                                <p>Embarcadero del Puerto de Cartagena<br>Cartagena, Murcia</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">🕐</div>
-                            <div class="contact-details">
-                                <h4>Horario de salidas</h4>
-                                <p>Todos los días: 11:00 – 18:00 h<br>Salidas aproximadamente cada hora</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <div class="contact-details">
-                                <h4>Teléfono</h4>
-                                <p><a href="tel:+34600000000">+34 600 000 000</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div class="contact-details">
-                                <h4>Email</h4>
-                                <p><a href="mailto:info@yole-catamaran.es">info@yole-catamaran.es</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div class="contact-details">
-                                <h4>Síguenos</h4>
-                                <div class="social-links">
-                                    <a href="#" class="social-link">Instagram</a>
-                                    <a href="#" class="social-link">Facebook</a>
-                                    <a href="#" class="social-link">TripAdvisor</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-map-wrapper" data-animate="fade-right">
-                        <!--
-                        Para integrar Google Maps, reemplaza este bloque con:
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=..."
-                            width="100%" height="450"
-                            style="border:0;" allowfullscreen="" loading="lazy"
-                            title="Ubicación Y-Olé Catamarán">
-                        </iframe>
-                        -->
-                        <div class="map-placeholder">
-                            <div class="map-pin-wrapper">
-                                <div class="map-pin">📍</div>
-                                <div class="map-pin-label">
-                                    <strong>Y-Olé Catamarán</strong>
-                                    <span>Puerto de Cartagena</span>
-                                </div>
-                            </div>
-                            <p class="map-note">Mapa interactivo próximamente</p>
-                        </div>
-                    </div>
+
+                <div class="contact-wa-wrap" data-animate data-delay="240">
+                    <a href="https://wa.me/34611868833" class="btn-wa btn-wa--lg" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                        </svg>
+                        Escríbenos por WhatsApp
+                    </a>
                 </div>
             </div>
         </section>
@@ -415,26 +356,28 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-top">
                 <div class="footer-brand">
                     <div class="footer-logo">
                         <span class="logo-y">Y</span><span class="logo-dash">-</span><span class="logo-ole">Olé</span>
                     </div>
-                    <p>Paseos en catamarán por la bahía de Cartagena. Vive el Mediterráneo desde el agua, sin reserva y sin esperas.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Instagram">IG</a>
-                        <a href="#" aria-label="Facebook">FB</a>
-                        <a href="#" aria-label="TripAdvisor">TA</a>
-                    </div>
+                    <p>Paseos en catamarán por la bahía<br>de Cartagena, Mediterráneo.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Navegación</h4>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#rutas">Rutas</a></li>
-                        <li><a href="#precios">Precios</a></li>
-                        <li><a href="#reservas">Reservas</a></li>
+                        <li><a href="#paseos">Paseos diarios</a></li>
+                        <li><a href="#especiales">Salidas especiales</a></li>
+                        <li><a href="#privados">Eventos privados</a></li>
                         <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:+34611868833">611 868 833</a></li>
+                        <li><a href="mailto:info@yolecatamaran.es">info@yolecatamaran.es</a></li>
+                        <li><a href="https://wa.me/34611868833" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -448,13 +391,16 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 Y-Olé Catamarán · Cartagena, España · Todos los derechos reservados</p>
-                <p class="footer-credit">Diseñado para el Mediterráneo</p>
+                <p>© 2025 Y-Olé Catamarán · Todos los derechos reservados</p>
             </div>
         </div>
     </footer>
 
-    <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">↑</button>
+    <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
 
     <script src="script.js"></script>
 </body>
