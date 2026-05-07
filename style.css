@@ -830,11 +830,13 @@ button { cursor: pointer; border: none; background: none; }
     .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
 
     .privados-media { grid-template-columns: 1fr 1fr; }
-    .privados-media-item:first-child { grid-column: span 2; }
+    .privados-media-item:first-child { grid-column: span 2; order: 3; }
+    .privados-media-item:nth-child(2) { order: 1; }
+    .privados-media-item:nth-child(3) { order: 2; }
 
     .paseos-media { grid-template-columns: 1fr; height: auto; }
-    .paseos-media-video { height: 260px; }
-    .paseos-media-img   { height: 380px; }
+    .paseos-media-video { height: 260px; order: 2; }
+    .paseos-media-img   { height: 380px; order: 1; }
 
     .ps-row { height: 160px; }
     .ps-main { height: 260px; }
