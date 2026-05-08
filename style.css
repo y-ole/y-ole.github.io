@@ -980,7 +980,8 @@ button { cursor: pointer; border: none; background: none; }
 
     .paseos-media { grid-template-columns: 1fr; height: auto; }
     .paseos-media-video { height: 260px; order: 2; }
-    .paseos-media-img   { height: 380px; order: 1; }
+    .paseos-media-img   { height: auto; order: 1; }
+    .paseos-media-img img { object-fit: contain; width: 100%; height: auto; }
 
     .ps-row { height: 160px; }
     .ps-main { height: 260px; }
