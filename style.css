@@ -748,6 +748,136 @@ button { cursor: pointer; border: none; background: none; }
     text-align: center;
 }
 
+/* --- EMBARQUE BLOCK ----------------------------------- */
+.embarque-block {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 32px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--border-mid);
+    margin-bottom: 44px;
+    flex-wrap: wrap;
+}
+.embarque-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+.embarque-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+.embarque-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+}
+.embarque-row svg {
+    width: 15px;
+    height: 15px;
+    color: var(--ocean-light);
+    flex-shrink: 0;
+}
+
+/* --- DIRECTIONS BUTTON -------------------------------- */
+.btn-directions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    background: var(--ocean);
+    color: var(--white);
+    font-family: var(--f-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+    transition: background 0.25s, transform 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.btn-directions:hover {
+    background: var(--ocean-mid);
+    transform: translateY(-2px);
+}
+.btn-directions--card {
+    display: block;
+    margin-top: 16px;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    text-align: center;
+    white-space: normal;
+}
+
+/* --- LEGAL PAGES -------------------------------------- */
+.legal-section {
+    padding: calc(var(--nav-h) + 64px) 0 var(--section-py);
+    min-height: calc(100vh - 360px);
+}
+.legal-content {
+    max-width: 760px;
+}
+.legal-content h1 {
+    font-family: var(--f-serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 56px;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+}
+.legal-content h2 {
+    font-family: var(--f-serif);
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 44px;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+}
+.legal-content p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+.legal-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+}
+.legal-content ul li {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.9;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 6px;
+}
+.legal-content ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ocean-light);
+}
+.legal-content a {
+    color: var(--ocean-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.legal-content a:hover { color: var(--white); }
+
 /* --- SCROLL TOP --------------------------------------- */
 .scroll-top {
     position: fixed;
@@ -864,6 +994,15 @@ button { cursor: pointer; border: none; background: none; }
         padding: 0 0 12px 0;
         flex: 1 1 120px;
     }
+
+    .embarque-block {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+        gap: 14px;
+    }
+    .embarque-info { flex: none; }
+    .btn-directions { width: 100%; }
 }
 
 @media (max-width: 520px) {
