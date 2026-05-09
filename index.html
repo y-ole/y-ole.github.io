@@ -22,20 +22,27 @@
             <a href="#inicio" class="nav-logo">
                 <span class="logo-y">Y</span><span class="logo-dash">-</span><span class="logo-ole">Olé</span>
             </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#paseos" class="nav-link">Paseos diarios</a></li>
-                <li><a href="#especiales" class="nav-link">Salidas especiales</a></li>
-                <li><a href="#privados" class="nav-link">Eventos privados</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li><a href="#paseos" class="nav-link" data-i18n="nav.paseos">Paseos diarios</a></li>
+                <li><a href="#especiales" class="nav-link" data-i18n="nav.especiales">Salidas especiales</a></li>
+                <li><a href="#privados" class="nav-link" data-i18n="nav.privados">Eventos privados</a></li>
+                <li><a href="#contacto" class="nav-link" data-i18n="nav.contacto">Contacto</a></li>
                 <li>
                     <a href="https://wa.me/34611868833" class="nav-link nav-cta" target="_blank" rel="noopener noreferrer">
                         WhatsApp
                     </a>
                 </li>
             </ul>
+            <div class="lang-switcher" id="langSwitcher" aria-label="Idioma / Language">
+                <button class="lang-btn" data-lang="es">ES</button>
+                <span class="lang-sep" aria-hidden="true">·</span>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <span class="lang-sep" aria-hidden="true">·</span>
+                <button class="lang-btn" data-lang="fr">FR</button>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" data-i18n-aria="nav.toggle" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -48,17 +55,17 @@
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-eyebrow">CARTAGENA · MAR</div>
+            <div class="hero-eyebrow" data-i18n="hero.eyebrow">CARTAGENA · MAR</div>
             <h1 class="hero-brand">Y-Olé</h1>
             <p class="hero-sub">Catamarán</p>
             <div class="hero-gap" aria-hidden="true"></div>
             <div class="hero-pills">
-                <span class="hero-pill">⚓ 97 pasajeros</span>
-                <span class="hero-pill">🌊 Salidas todo el año</span>
-                <span class="hero-pill">🏊 Zona de baño</span>
+                <span class="hero-pill" data-i18n="hero.pill1">⚓ 97 pasajeros</span>
+                <span class="hero-pill" data-i18n="hero.pill2">🌊 Salidas todo el año</span>
+                <span class="hero-pill" data-i18n="hero.pill3">🏊 Zona de baño</span>
             </div>
             <a href="#paseos" class="hero-scroll-cta">
-                <span>Explorar</span>
+                <span data-i18n="hero.cta">Explorar</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                     <polyline points="6 9 12 15 18 9"/>
                 </svg>
@@ -71,65 +78,65 @@
         <!-- ===== PASEOS DIARIOS ===== -->
         <section id="paseos" class="section paseos">
             <div class="container">
-                <div class="section-label" data-animate>Paseos diarios</div>
-                <h2 class="section-title" data-animate data-delay="80">
+                <div class="section-label" data-animate data-i18n="paseos.label">Paseos diarios</div>
+                <h2 class="section-title" data-animate data-delay="80" data-i18n-html="paseos.title">
                     La bahía de Cartagena<br><em>desde el agua</em>
                 </h2>
-                <p class="section-lead" data-animate data-delay="160">
+                <p class="section-lead" data-animate data-delay="160" data-i18n="paseos.lead">
                     45 minutos navegando por uno de los puertos más espectaculares del Mediterráneo.
                     Sin reserva previa. Puerto de Cartagena, junto a la bandera de España.
                 </p>
 
                 <div class="prices-band" data-animate data-delay="220">
                     <div class="price-cell">
-                        <span class="pc-label">Adulto</span>
+                        <span class="pc-label" data-i18n="price.adult">Adulto</span>
                         <span class="pc-amount">8<sup>€</sup></span>
                     </div>
                     <div class="price-cell">
-                        <span class="pc-label">Senior / Joven</span>
+                        <span class="pc-label" data-i18n="price.senior">Senior / Joven</span>
                         <span class="pc-amount">6<sup>€</sup></span>
                     </div>
                     <div class="price-cell">
-                        <span class="pc-label">Niño (3 – 9 años)</span>
+                        <span class="pc-label" data-i18n="price.child">Niño (3 – 9 años)</span>
                         <span class="pc-amount">2<sup>€</sup></span>
                     </div>
                     <div class="price-cell">
-                        <span class="pc-label">Menor de 3 años</span>
-                        <span class="pc-amount pc-free">Gratis</span>
+                        <span class="pc-label" data-i18n="price.under3">Menor de 3 años</span>
+                        <span class="pc-amount pc-free" data-i18n="price.free">Gratis</span>
                     </div>
                 </div>
 
                 <div class="embarque-block" data-animate data-delay="250">
-                    <div class="embarque-label">Dónde embarcamos</div>
+                    <div class="embarque-label" data-i18n="embarque.label">Dónde embarcamos</div>
                     <div class="embarque-info">
                         <div class="embarque-row">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span>Puerto de Cartagena, junto a la bandera de España</span>
+                            <span data-i18n="embarque.location">Puerto de Cartagena, junto a la bandera de España</span>
                         </div>
                         <div class="embarque-row">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            <span>Todos los días · 11:00 – 19:00 h</span>
+                            <span data-i18n="embarque.hours">Todos los días · 11:00 – 19:00 h</span>
                         </div>
                     </div>
-                    <a href="https://www.google.com/maps/search/Catamarán+Y-Olé+Cartagena" class="btn-directions" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+                    <a href="https://www.google.com/maps/search/Catamarán+Y-Olé+Cartagena" class="btn-directions" target="_blank" rel="noopener noreferrer" data-i18n="btn.directions">Cómo llegar</a>
                 </div>
 
                 <div class="meta-row" data-animate data-delay="280">
                     <div class="meta-chip">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        45 minutos
+                        <span data-i18n="chip.45min">45 minutos</span>
                     </div>
                     <div class="meta-chip">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        Puerto de Cartagena
+                        <span data-i18n="chip.port">Puerto de Cartagena</span>
                     </div>
                     <div class="meta-chip">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                        Todo el año
+                        <span data-i18n="chip.yearround">Todo el año</span>
                     </div>
                     <div class="meta-chip">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        Sin reserva previa
+                        <span data-i18n="chip.noreserve">Sin reserva previa</span>
                     </div>
                 </div>
 
@@ -144,7 +151,7 @@
                     </div>
                 </div>
 
-                <p class="paseos-footer-note" data-animate>
+                <p class="paseos-footer-note" data-animate data-i18n-html="paseos.note">
                     Venta de entradas en la <strong>caseta del embarcadero</strong> · Puerto de Cartagena · Efectivo y tarjeta
                 </p>
             </div>
@@ -155,54 +162,54 @@
             <div class="container">
                 <div class="especiales-grid">
                     <div class="especiales-left">
-                        <div class="section-label" data-animate>Salidas especiales</div>
-                        <h2 class="section-title" data-animate data-delay="80">
+                        <div class="section-label" data-animate data-i18n="esp.label">Salidas especiales</div>
+                        <h2 class="section-title" data-animate data-delay="80" data-i18n-html="esp.title">
                             Tres horas en<br><em>alta mar</em>
                         </h2>
-                        <p class="section-lead" data-animate data-delay="160">
+                        <p class="section-lead" data-animate data-delay="160" data-i18n="esp.lead">
                             Una experiencia más intensa: navegación prolongada por la bahía de Cartagena
                             con parada para baño en aguas cristalinas del Mediterráneo.
                         </p>
 
                         <div class="prices-band prices-band--2col" data-animate data-delay="220">
                             <div class="price-cell">
-                                <span class="pc-label">Adulto</span>
+                                <span class="pc-label" data-i18n="price.adult">Adulto</span>
                                 <span class="pc-amount">20<sup>€</sup></span>
                             </div>
                             <div class="price-cell">
-                                <span class="pc-label">Jubilado / Adolescente</span>
+                                <span class="pc-label" data-i18n="price.retired">Jubilado / Adolescente</span>
                                 <span class="pc-amount">15<sup>€</sup></span>
                             </div>
                             <div class="price-cell">
-                                <span class="pc-label">Niño</span>
+                                <span class="pc-label" data-i18n="price.child2">Niño</span>
                                 <span class="pc-amount">10<sup>€</sup></span>
                             </div>
                             <div class="price-cell">
-                                <span class="pc-label">Menor de 3 años</span>
-                                <span class="pc-amount pc-free">Gratis</span>
+                                <span class="pc-label" data-i18n="price.under3">Menor de 3 años</span>
+                                <span class="pc-amount pc-free" data-i18n="price.free">Gratis</span>
                             </div>
                         </div>
 
                         <div class="meta-row" data-animate data-delay="260">
                             <div class="meta-chip">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                3 horas
+                                <span data-i18n="chip.3h">3 horas</span>
                             </div>
                             <div class="meta-chip">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                Puerto de Cartagena
+                                <span data-i18n="chip.port">Puerto de Cartagena</span>
                             </div>
-                            <div class="meta-chip">🏊 Baño incluido</div>
+                            <div class="meta-chip" data-i18n="chip.swim">🏊 Baño incluido</div>
                         </div>
 
                         <div class="reserva-card" data-animate data-delay="320">
-                            <p class="reserva-label">Reserva por teléfono o WhatsApp</p>
+                            <p class="reserva-label" data-i18n="reserva.label">Reserva por teléfono o WhatsApp</p>
                             <a href="tel:+34611868833" class="reserva-phone">611 868 833</a>
                             <a href="https://wa.me/34611868833" class="btn-wa" target="_blank" rel="noopener noreferrer">
                                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                                 </svg>
-                                Reservar por WhatsApp
+                                <span data-i18n="btn.wa">Reservar por WhatsApp</span>
                             </a>
                             <!--
                             ================================================================
@@ -257,33 +264,33 @@
             <div class="container">
                 <div class="privados-inner">
                     <div class="privados-left">
-                        <div class="section-label section-label--dim" data-animate>Eventos privados</div>
-                        <h2 class="section-title" data-animate data-delay="80">
+                        <div class="section-label section-label--dim" data-animate data-i18n="priv.label">Eventos privados</div>
+                        <h2 class="section-title" data-animate data-delay="80" data-i18n-html="priv.title">
                             El catamarán,<br><em>solo para vosotros</em>
                         </h2>
-                        <p class="section-lead" data-animate data-delay="160">
+                        <p class="section-lead" data-animate data-delay="160" data-i18n="priv.lead">
                             Hasta 97 pasajeros. Celebraciones, despedidas, teambuilding, rutas a medida.
                             Cada propuesta es única y se estudia individualmente.
                         </p>
                         <div class="priv-stats" data-animate data-delay="220">
                             <div class="priv-stat">
                                 <span class="ps-n">97</span>
-                                <span class="ps-l">personas máximo</span>
+                                <span class="ps-l" data-i18n="priv.stat1">personas máximo</span>
                             </div>
                             <div class="priv-stat">
                                 <span class="ps-n">360°</span>
-                                <span class="ps-l">personalización</span>
+                                <span class="ps-l" data-i18n="priv.stat2">personalización</span>
                             </div>
                             <div class="priv-stat">
                                 <span class="ps-n">12</span>
-                                <span class="ps-l">meses disponibles</span>
+                                <span class="ps-l" data-i18n="priv.stat3">meses disponibles</span>
                             </div>
                         </div>
                     </div>
                     <div class="privados-right" data-animate data-delay="200">
-                        <p class="priv-contact-intro">Solicitudes por correo electrónico:</p>
+                        <p class="priv-contact-intro" data-i18n="priv.intro">Solicitudes por correo electrónico:</p>
                         <a href="mailto:info@yolecatamaran.es" class="priv-email">info@yolecatamaran.es</a>
-                        <p class="priv-note">
+                        <p class="priv-note" data-i18n="priv.note">
                             Estudiamos cada propuesta y respondemos por correo en el menor tiempo posible.
                         </p>
                     </div>
@@ -308,29 +315,29 @@
         <!-- ===== CONTACTO ===== -->
         <section id="contacto" class="section contact">
             <div class="container">
-                <div class="section-label" data-animate>Contacto</div>
-                <h2 class="section-title" data-animate data-delay="80">Estamos en el puerto</h2>
+                <div class="section-label" data-animate data-i18n="contact.label">Contacto</div>
+                <h2 class="section-title" data-animate data-delay="80" data-i18n="contact.title">Estamos en el puerto</h2>
 
                 <div class="contact-grid" data-animate data-delay="160">
                     <div class="contact-card">
                         <div class="cc-icon">📍</div>
-                        <h4>Dónde encontrarnos</h4>
-                        <p>Puerto de Cartagena,<br>junto a la bandera de España</p>
-                        <a href="https://www.google.com/maps/search/Catamarán+Y-Olé+Cartagena" class="btn-directions btn-directions--card" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+                        <h4 data-i18n="contact.where">Dónde encontrarnos</h4>
+                        <p data-i18n-html="contact.location">Puerto de Cartagena,<br>junto a la bandera de España</p>
+                        <a href="https://www.google.com/maps/search/Catamarán+Y-Olé+Cartagena" class="btn-directions btn-directions--card" target="_blank" rel="noopener noreferrer" data-i18n="btn.directions">Cómo llegar</a>
                     </div>
                     <div class="contact-card">
                         <div class="cc-icon">🕐</div>
-                        <h4>Horario de salidas</h4>
-                        <p>Todos los días<br>11:00 – 19:00 h</p>
+                        <h4 data-i18n="contact.schedule">Horario de salidas</h4>
+                        <p data-i18n-html="contact.hours">Todos los días<br>11:00 – 19:00 h</p>
                     </div>
                     <div class="contact-card">
                         <div class="cc-icon">📞</div>
-                        <h4>Teléfono / WhatsApp</h4>
+                        <h4 data-i18n="contact.phone">Teléfono / WhatsApp</h4>
                         <p><a href="tel:+34611868833">611 868 833</a></p>
                     </div>
                     <div class="contact-card">
                         <div class="cc-icon">📧</div>
-                        <h4>Email</h4>
+                        <h4 data-i18n="contact.email">Email</h4>
                         <p><a href="mailto:info@yolecatamaran.es">info@yolecatamaran.es</a></p>
                     </div>
                 </div>
@@ -340,7 +347,7 @@
                         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                         </svg>
-                        Escríbenos por WhatsApp
+                        <span data-i18n="btn.wa.lg">Escríbenos por WhatsApp</span>
                     </a>
                 </div>
             </div>
@@ -356,19 +363,19 @@
                     <div class="footer-logo">
                         <span class="logo-y">Y</span><span class="logo-dash">-</span><span class="logo-ole">Olé</span>
                     </div>
-                    <p>Paseos en catamarán por la bahía<br>de Cartagena, Mediterráneo.</p>
+                    <p data-i18n-html="footer.brand">Paseos en catamarán por la bahía<br>de Cartagena, Mediterráneo.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Navegación</h4>
+                    <h4 data-i18n="footer.nav">Navegación</h4>
                     <ul>
-                        <li><a href="#paseos">Paseos diarios</a></li>
-                        <li><a href="#especiales">Salidas especiales</a></li>
-                        <li><a href="#privados">Eventos privados</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#paseos" data-i18n="nav.paseos">Paseos diarios</a></li>
+                        <li><a href="#especiales" data-i18n="nav.especiales">Salidas especiales</a></li>
+                        <li><a href="#privados" data-i18n="nav.privados">Eventos privados</a></li>
+                        <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Contacto</h4>
+                    <h4 data-i18n="footer.contact">Contacto</h4>
                     <ul>
                         <li><a href="tel:+34611868833">611 868 833</a></li>
                         <li><a href="mailto:info@yolecatamaran.es">info@yolecatamaran.es</a></li>
@@ -376,17 +383,17 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Legal</h4>
+                    <h4 data-i18n="footer.legal">Legal</h4>
                     <ul>
-                        <li><a href="aviso-legal.html">Aviso legal</a></li>
-                        <li><a href="politica-privacidad.html">Política de privacidad</a></li>
-                        <li><a href="politica-cookies.html">Política de cookies</a></li>
-                        <li><a href="condiciones-generales.html">Condiciones generales</a></li>
+                        <li><a href="aviso-legal.html" data-i18n="footer.legal1">Aviso legal</a></li>
+                        <li><a href="politica-privacidad.html" data-i18n="footer.legal2">Política de privacidad</a></li>
+                        <li><a href="politica-cookies.html" data-i18n="footer.legal3">Política de cookies</a></li>
+                        <li><a href="condiciones-generales.html" data-i18n="footer.legal4">Condiciones generales</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 Y-Olé Catamarán · Todos los derechos reservados</p>
+                <p data-i18n="footer.copy">© 2025 Y-Olé Catamarán · Todos los derechos reservados</p>
             </div>
         </div>
     </footer>

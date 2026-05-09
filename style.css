@@ -83,9 +83,9 @@ button { cursor: pointer; border: none; background: none; }
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 24px;
 }
+.nav-menu { margin-left: auto; }
 .nav-logo {
     font-family: var(--f-serif);
     font-size: 1.8rem;
@@ -878,6 +878,45 @@ button { cursor: pointer; border: none; background: none; }
 }
 .legal-content a:hover { color: var(--white); }
 
+/* --- LANG SWITCHER ------------------------------------ */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+}
+.lang-btn {
+    font-family: var(--f-sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.45);
+    padding: 4px 6px;
+    border-radius: 2px;
+    transition: color 0.2s;
+    line-height: 1;
+    position: relative;
+}
+.lang-btn:hover { color: rgba(255,255,255,0.85); }
+.lang-btn.active {
+    color: var(--white);
+}
+.lang-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 6px;
+    right: 6px;
+    height: 1.5px;
+    background: var(--gold);
+    border-radius: 1px;
+}
+.lang-sep {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.2);
+    user-select: none;
+}
+
 /* --- SCROLL TOP --------------------------------------- */
 .scroll-top {
     position: fixed;
@@ -942,6 +981,8 @@ button { cursor: pointer; border: none; background: none; }
 
 @media (max-width: 768px) {
     .nav-toggle { display: flex; }
+    .lang-switcher { margin-left: auto; }
+    .nav-menu { margin-left: 0; }
     .nav-menu {
         position: fixed;
         inset: var(--nav-h) 0 0 0;
