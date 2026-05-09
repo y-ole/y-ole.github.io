@@ -187,6 +187,7 @@
             'modal.empty':       'No hay salidas disponibles próximamente.',
             'modal.sold_out':    'COMPLETO',
             'modal.spots':       'plazas disponibles',
+            'btn.book':          'Reservar',
         },
         en: {
             'nav.paseos':        'Daily trips',
@@ -260,6 +261,7 @@
             'modal.empty':       'No departures available soon.',
             'modal.sold_out':    'SOLD OUT',
             'modal.spots':       'spots available',
+            'btn.book':          'Book now',
         },
         fr: {
             'nav.paseos':        'Sorties quotidiennes',
@@ -333,6 +335,7 @@
             'modal.empty':       'Aucune sortie disponible prochainement.',
             'modal.sold_out':    'COMPLET',
             'modal.spots':       'places disponibles',
+            'btn.book':          'Réserver',
         }
     };
 
@@ -418,10 +421,9 @@
         return null;
     }
 
-    function formatDate(str) {
+    function formatDateLang(str, lang) {
         var d = parseDate(str);
         if (!d || isNaN(d.getTime())) return str;
-        var lang   = document.documentElement.lang || 'es';
         var locale = lang === 'fr' ? 'fr-FR' : lang === 'en' ? 'en-GB' : 'es-ES';
         var wd  = d.toLocaleDateString(locale, { weekday: 'long' });
         var day = d.getDate();
@@ -431,6 +433,10 @@
         if (lang === 'en') return wd + ', ' + mo + ' ' + day;
         if (lang === 'fr') return wd + ' ' + day + ' ' + mo;
         return wd + ' ' + day + ' de ' + mo;
+    }
+
+    function formatDate(str) {
+        return formatDateLang(str, document.documentElement.lang || 'es');
     }
 
     // --- CSV parser (no quoted-commas needed for these data types) ---
@@ -458,23 +464,36 @@
         }
 
         list.innerHTML = active.map(function (r) {
-            var fecha     = formatDate(r['fecha'] || '');
+            var fechaRaw   = r['fecha'] || '';
+            var fecha      = formatDate(fechaRaw);
+            var fechaEs    = formatDateLang(fechaRaw, 'es');
             var horaInicio = r['hora_inicio'] || '';
             var horaFin    = r['hora_fin']    || '';
             var horaStr    = horaInicio && horaFin ? horaInicio + ' – ' + horaFin : horaInicio || horaFin;
             var disp       = parseInt(r['plazas_disponibles'], 10);
             var soldOut    = isNaN(disp) ? false : disp === 0;
 
-            var plazasHtml = soldOut
-                ? '<span class="salida-plazas salida-plazas--sold">' + t('modal.sold_out') + '</span>'
-                : '<span class="salida-plazas salida-plazas--ok">' + (isNaN(disp) ? '' : disp + ' ') + t('modal.spots') + '</span>';
+            var rightHtml;
+            if (soldOut) {
+                rightHtml = '<span class="salida-plazas salida-plazas--sold">' + t('modal.sold_out') + '</span>';
+            } else {
+                var msg = 'Hola, quiero reservar para la salida del ' + fechaEs
+                        + ' a las ' + horaStr + '. Somos __ personas.';
+                var waUrl = 'https://wa.me/34628241321?text=' + encodeURIComponent(msg);
+                var spotsLabel = isNaN(disp) ? '' : disp + ' ' + t('modal.spots');
+                rightHtml = '<div class="salida-actions">'
+                    + (spotsLabel ? '<span class="salida-plazas salida-plazas--ok">' + spotsLabel + '</span>' : '')
+                    + '<a href="' + waUrl + '" class="salida-book-btn" target="_blank" rel="noopener noreferrer">'
+                    + t('btn.book') + '</a>'
+                    + '</div>';
+            }
 
             return '<div class="salida-row">'
                 + '<div class="salida-info">'
                 + '<span class="salida-fecha">' + fecha + '</span>'
                 + '<span class="salida-hora">' + horaStr + '</span>'
                 + '</div>'
-                + plazasHtml
+                + rightHtml
                 + '</div>';
         }).join('');
     }
