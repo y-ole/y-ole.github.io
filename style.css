@@ -943,6 +943,157 @@ button { cursor: pointer; border: none; background: none; }
 .scroll-top:hover { background: var(--ocean-mid); }
 .scroll-top svg { width: 18px; height: 18px; }
 
+/* --- BTN SALIDAS -------------------------------------- */
+.btn-salidas {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 12px 22px;
+    border: 1px solid rgba(201,169,110,0.45);
+    border-radius: 3px;
+    font-family: var(--f-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+    width: 100%;
+    justify-content: center;
+}
+.btn-salidas:hover {
+    background: rgba(201,169,110,0.1);
+    border-color: var(--gold);
+    color: var(--gold-light);
+}
+.btn-salidas svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* --- SALIDAS MODAL ------------------------------------ */
+.salidas-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.salidas-modal[hidden] { display: none; }
+.salidas-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5,12,24,0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.salidas-modal-box {
+    position: relative;
+    z-index: 1;
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 520px;
+    max-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.65);
+    animation: modal-in 0.28s var(--ease) both;
+}
+@keyframes modal-in {
+    from { opacity: 0; transform: translateY(18px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+}
+.salidas-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px 18px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.salidas-modal-title {
+    font-family: var(--f-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+}
+.salidas-modal-close {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    border-radius: 2px;
+    transition: color 0.2s, background 0.2s;
+    flex-shrink: 0;
+}
+.salidas-modal-close:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+.salidas-modal-close svg { width: 18px; height: 18px; }
+.salidas-modal-body {
+    overflow-y: auto;
+    padding: 20px 28px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.salidas-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.salida-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 18px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--border-mid);
+    transition: background 0.2s;
+}
+.salida-row:hover { background: rgba(30,96,145,0.14); }
+.salida-info { display: flex; flex-direction: column; gap: 3px; }
+.salida-fecha {
+    font-family: var(--f-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+}
+.salida-hora {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.06em;
+}
+.salida-plazas {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: right;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+.salida-plazas--ok   { color: var(--gold); }
+.salida-plazas--sold { color: #e05c5c; }
+.salidas-status {
+    text-align: center;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.38);
+    padding: 32px 0;
+}
+.salidas-modal-note {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.32);
+    line-height: 1.7;
+    text-align: center;
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    margin-top: auto;
+}
+
 /* --- SCROLL ANIMATIONS -------------------------------- */
 [data-animate] {
     opacity: 0;

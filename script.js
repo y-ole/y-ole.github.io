@@ -178,6 +178,15 @@
             'footer.legal3':     'Política de cookies',
             'footer.legal4':     'Condiciones generales',
             'footer.copy':       '© 2025 Y-Olé Catamarán · Todos los derechos reservados',
+            'btn.salidas':       'Próximas salidas',
+            'modal.title':       'Próximas salidas',
+            'modal.close':       'Cerrar',
+            'modal.note':        'El pago se realiza en caseta antes de embarcar.',
+            'modal.loading':     'Cargando...',
+            'modal.error':       'No se pudieron cargar las salidas.',
+            'modal.empty':       'No hay salidas disponibles próximamente.',
+            'modal.sold_out':    'COMPLETO',
+            'modal.spots':       'plazas disponibles',
         },
         en: {
             'nav.paseos':        'Daily trips',
@@ -242,6 +251,15 @@
             'footer.legal3':     'Cookie policy',
             'footer.legal4':     'General terms',
             'footer.copy':       '© 2025 Y-Olé Catamarán · All rights reserved',
+            'btn.salidas':       'Upcoming departures',
+            'modal.title':       'Upcoming departures',
+            'modal.close':       'Close',
+            'modal.note':        'Payment is made at the booth before boarding.',
+            'modal.loading':     'Loading...',
+            'modal.error':       'Could not load departures.',
+            'modal.empty':       'No departures available soon.',
+            'modal.sold_out':    'SOLD OUT',
+            'modal.spots':       'spots available',
         },
         fr: {
             'nav.paseos':        'Sorties quotidiennes',
@@ -306,6 +324,15 @@
             'footer.legal3':     'Politique de cookies',
             'footer.legal4':     'Conditions générales',
             'footer.copy':       '© 2025 Y-Olé Catamarán · Tous droits réservés',
+            'btn.salidas':       'Prochaines sorties',
+            'modal.title':       'Prochaines sorties',
+            'modal.close':       'Fermer',
+            'modal.note':        'Le paiement s\'effectue au guichet avant l\'embarquement.',
+            'modal.loading':     'Chargement...',
+            'modal.error':       'Impossible de charger les sorties.',
+            'modal.empty':       'Aucune sortie disponible prochainement.',
+            'modal.sold_out':    'COMPLET',
+            'modal.spots':       'places disponibles',
         }
     };
 
@@ -338,7 +365,11 @@
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
+
+        document.dispatchEvent(new CustomEvent('ylangchange', { detail: { lang: lang, t: t } }));
     }
+
+    window.__ylT = TRANSLATIONS;
 
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -348,5 +379,148 @@
 
     var saved = localStorage.getItem('ylang');
     applyLang(LANGS.indexOf(saved) !== -1 ? saved : 'es');
+
+}());
+
+// ============================================================
+// SALIDAS ESPECIALES — Modal con fetch CSV
+// ============================================================
+(function () {
+    'use strict';
+
+    var CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSmPTlQQ4BqJjcHLCp_jn1vo9hI8NHAuER-JfcxV9rAROh3lRa9BNO1n7oJsbc5LIcePxJ0HZ-rQK8X/pub?output=csv';
+
+    var modal    = document.getElementById('salidasModal');
+    var backdrop = document.getElementById('salidasModalBackdrop');
+    var closeBtn = document.getElementById('salidasModalClose');
+    var openBtn  = document.getElementById('btnSalidas');
+    var list     = document.getElementById('salidasList');
+    var cache    = null;
+
+    function t(key) {
+        var lang = document.documentElement.lang || 'es';
+        var dict = window.__ylT && window.__ylT[lang] ? window.__ylT[lang] : {};
+        return dict[key] || key;
+    }
+
+    // --- Date helpers ---
+    function parseDate(str) {
+        if (!str) return null;
+        var p;
+        if (str.indexOf('/') !== -1) {
+            p = str.split('/');
+            return new Date(+p[2], +p[1] - 1, +p[0]);
+        }
+        if (str.indexOf('-') !== -1) {
+            p = str.split('-');
+            return new Date(+p[0], +p[1] - 1, +p[2]);
+        }
+        return null;
+    }
+
+    function formatDate(str) {
+        var d = parseDate(str);
+        if (!d || isNaN(d.getTime())) return str;
+        var lang   = document.documentElement.lang || 'es';
+        var locale = lang === 'fr' ? 'fr-FR' : lang === 'en' ? 'en-GB' : 'es-ES';
+        var wd  = d.toLocaleDateString(locale, { weekday: 'long' });
+        var day = d.getDate();
+        var mo  = d.toLocaleDateString(locale, { month: 'long' });
+        wd = wd.charAt(0).toUpperCase() + wd.slice(1);
+        mo = mo.charAt(0).toLowerCase() + mo.slice(1);
+        if (lang === 'en') return wd + ', ' + mo + ' ' + day;
+        if (lang === 'fr') return wd + ' ' + day + ' ' + mo;
+        return wd + ' ' + day + ' de ' + mo;
+    }
+
+    // --- CSV parser (no quoted-commas needed for these data types) ---
+    function parseCSV(text) {
+        var lines = text.trim().split(/\r?\n/);
+        if (lines.length < 2) return [];
+        var headers = lines[0].split(',').map(function (h) { return h.trim().toLowerCase().replace(/"/g, ''); });
+        return lines.slice(1).map(function (line) {
+            var cols = line.split(',').map(function (c) { return c.trim().replace(/"/g, ''); });
+            var row  = {};
+            headers.forEach(function (h, i) { row[h] = cols[i] !== undefined ? cols[i] : ''; });
+            return row;
+        });
+    }
+
+    // --- Render ---
+    function renderSalidas(rows) {
+        var active = rows.filter(function (r) {
+            return (r['activa'] || '').toUpperCase() === 'SI';
+        });
+
+        if (active.length === 0) {
+            list.innerHTML = '<p class="salidas-status">' + t('modal.empty') + '</p>';
+            return;
+        }
+
+        list.innerHTML = active.map(function (r) {
+            var fecha  = formatDate(r['fecha'] || '');
+            var hora   = r['hora'] || '';
+            var disp   = parseInt(r['plazas_disponibles'], 10);
+            var soldOut = isNaN(disp) ? false : disp === 0;
+
+            var plazasHtml = soldOut
+                ? '<span class="salida-plazas salida-plazas--sold">' + t('modal.sold_out') + '</span>'
+                : '<span class="salida-plazas salida-plazas--ok">' + (isNaN(disp) ? '' : disp + ' ') + t('modal.spots') + '</span>';
+
+            return '<div class="salida-row">'
+                + '<div class="salida-info">'
+                + '<span class="salida-fecha">' + fecha + '</span>'
+                + '<span class="salida-hora">' + hora + '</span>'
+                + '</div>'
+                + plazasHtml
+                + '</div>';
+        }).join('');
+    }
+
+    function loadSalidas() {
+        list.innerHTML = '<p class="salidas-status">' + t('modal.loading') + '</p>';
+        fetch(CSV_URL)
+            .then(function (r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
+            .then(function (text) {
+                cache = parseCSV(text);
+                renderSalidas(cache);
+            })
+            .catch(function () {
+                list.innerHTML = '<p class="salidas-status">' + t('modal.error') + '</p>';
+            });
+    }
+
+    // --- Modal open / close ---
+    function openModal() {
+        modal.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+        if (cache === null) {
+            loadSalidas();
+        } else {
+            renderSalidas(cache);
+        }
+    }
+
+    function closeModal() {
+        modal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+        if (openBtn) openBtn.focus();
+    }
+
+    if (openBtn)  openBtn.addEventListener('click',  openModal);
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal();
+    });
+
+    // Re-render list when language changes (cache already populated)
+    document.addEventListener('ylangchange', function () {
+        if (!modal.hasAttribute('hidden') && cache !== null) renderSalidas(cache);
+    });
 
 }());

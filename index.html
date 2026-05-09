@@ -211,6 +211,10 @@
                                 </svg>
                                 <span data-i18n="btn.wa">Reservar por WhatsApp</span>
                             </a>
+                            <button class="btn-salidas" id="btnSalidas" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                <span data-i18n="btn.salidas">Próximas salidas</span>
+                            </button>
                             <!--
                             ================================================================
                             SISTEMA DE RESERVA ONLINE — PENDIENTE DE INTEGRACIÓN
@@ -403,6 +407,25 @@
             <polyline points="18 15 12 9 6 15"/>
         </svg>
     </button>
+
+    <!-- ===== MODAL PRÓXIMAS SALIDAS ===== -->
+    <div class="salidas-modal" id="salidasModal" role="dialog" aria-modal="true" aria-labelledby="salidasModalTitle" hidden>
+        <div class="salidas-modal-backdrop" id="salidasModalBackdrop"></div>
+        <div class="salidas-modal-box">
+            <div class="salidas-modal-header">
+                <h3 class="salidas-modal-title" id="salidasModalTitle" data-i18n="modal.title">Próximas salidas</h3>
+                <button class="salidas-modal-close" id="salidasModalClose" aria-label="Cerrar" data-i18n-aria="modal.close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="salidas-modal-body">
+                <div class="salidas-list" id="salidasList"></div>
+                <p class="salidas-modal-note" data-i18n="modal.note">El pago se realiza en caseta antes de embarcar.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
