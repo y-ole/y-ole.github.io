@@ -479,7 +479,7 @@
             } else {
                 var msg = 'Hola, quiero reservar para la salida del ' + fechaEs
                         + ' a las ' + horaStr + '. Somos __ personas.';
-                var waUrl = 'https://wa.me/34628241321?text=' + encodeURIComponent(msg);
+                var waUrl = 'https://wa.me/34611868833?text=' + encodeURIComponent(msg);
                 var spotsLabel = isNaN(disp) ? '' : disp + ' ' + t('modal.spots');
                 rightHtml = '<div class="salida-actions">'
                     + (spotsLabel ? '<span class="salida-plazas salida-plazas--ok">' + spotsLabel + '</span>' : '')
