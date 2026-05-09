@@ -458,10 +458,12 @@
         }
 
         list.innerHTML = active.map(function (r) {
-            var fecha  = formatDate(r['fecha'] || '');
-            var hora   = r['hora'] || '';
-            var disp   = parseInt(r['plazas_disponibles'], 10);
-            var soldOut = isNaN(disp) ? false : disp === 0;
+            var fecha     = formatDate(r['fecha'] || '');
+            var horaInicio = r['hora_inicio'] || '';
+            var horaFin    = r['hora_fin']    || '';
+            var horaStr    = horaInicio && horaFin ? horaInicio + ' – ' + horaFin : horaInicio || horaFin;
+            var disp       = parseInt(r['plazas_disponibles'], 10);
+            var soldOut    = isNaN(disp) ? false : disp === 0;
 
             var plazasHtml = soldOut
                 ? '<span class="salida-plazas salida-plazas--sold">' + t('modal.sold_out') + '</span>'
@@ -470,7 +472,7 @@
             return '<div class="salida-row">'
                 + '<div class="salida-info">'
                 + '<span class="salida-fecha">' + fecha + '</span>'
-                + '<span class="salida-hora">' + hora + '</span>'
+                + '<span class="salida-hora">' + horaStr + '</span>'
                 + '</div>'
                 + plazasHtml
                 + '</div>';
