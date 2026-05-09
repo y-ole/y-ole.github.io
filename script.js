@@ -455,7 +455,7 @@
     // --- Render ---
     function renderSalidas(rows) {
         var active = rows.filter(function (r) {
-            return (r['activa'] || '').toUpperCase() === 'SI';
+            return (r['activa'] || '').toLowerCase() === 'si';
         });
 
         if (active.length === 0) {
