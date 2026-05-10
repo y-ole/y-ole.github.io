@@ -747,6 +747,28 @@ button { cursor: pointer; border: none; background: none; }
     line-height: 1.7;
     text-align: center;
 }
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.45);
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+}
+.footer-social a:hover {
+    background: rgba(255,255,255,0.14);
+    color: var(--white);
+}
+.footer-social svg { width: 16px; height: 16px; }
 
 /* --- EMBARQUE BLOCK ----------------------------------- */
 .embarque-block {
@@ -917,31 +939,24 @@ button { cursor: pointer; border: none; background: none; }
     user-select: none;
 }
 
-/* --- SCROLL TOP --------------------------------------- */
-.scroll-top {
+/* --- WA FLOAT ----------------------------------------- */
+.wa-float {
     position: fixed;
     bottom: 28px;
     right: 28px;
-    width: 44px;
-    height: 44px;
-    background: var(--ocean);
-    border-radius: 3px;
+    width: 52px;
+    height: 52px;
+    background: #25d366;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.35s, transform 0.35s, background 0.2s;
     z-index: 50;
-    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    transition: background 0.2s, transform 0.2s;
 }
-.scroll-top.visible {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-}
-.scroll-top:hover { background: var(--ocean-mid); }
-.scroll-top svg { width: 18px; height: 18px; }
+.wa-float:hover { background: #20c05a; transform: translateY(-2px); }
+.wa-float svg { width: 28px; height: 28px; }
 
 /* --- BTN SALIDAS -------------------------------------- */
 .btn-salidas {

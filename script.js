@@ -4,13 +4,11 @@
     'use strict';
 
     // --- Navbar: transparent → solid on scroll ---
-    const navbar     = document.getElementById('navbar');
-    const scrollTop  = document.getElementById('scrollTop');
+    const navbar = document.getElementById('navbar');
 
     function onScroll() {
         const y = window.scrollY;
         navbar.classList.toggle('scrolled', y > 60);
-        scrollTop.classList.toggle('visible', y > 500);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -44,11 +42,6 @@
             navToggle.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         });
-    });
-
-    // --- Scroll to top ---
-    scrollTop.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // --- Smooth scroll for anchor links ---
@@ -478,7 +471,7 @@
                 rightHtml = '<span class="salida-plazas salida-plazas--sold">' + t('modal.sold_out') + '</span>';
             } else {
                 var msg = 'Hola, quiero reservar para la salida del ' + fechaEs
-                        + ' a las ' + horaStr + '. Somos __ personas.';
+                        + ' a las ' + horaStr + '.';
                 var waUrl = 'https://wa.me/34611868833?text=' + encodeURIComponent(msg);
                 var spotsLabel = isNaN(disp) ? '' : disp + ' ' + t('modal.spots');
                 rightHtml = '<div class="salida-actions">'
