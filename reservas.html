@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Y-Olé · Salidas Especiales</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+  body { background: #07111F; color: #EEF2F8; font-family: 'Helvetica Neue', Arial, sans-serif;
+    max-width: 430px; margin: 0 auto; min-height: 100vh; padding-bottom: 64px; }
+  button { touch-action: manipulation; font-family: inherit; cursor: pointer; border: none; }
+  input[type=time], input[type=number] { color-scheme: dark; }
+
+  /* Header */
+  .header { background: linear-gradient(155deg,#0A1D3A 0%,#1B4F8A 100%);
+    padding: 20px 20px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .header-row { display: flex; justify-content: space-between; align-items: center; }
+  .h-title { font-size: 23px; font-family: Georgia,serif; font-weight: bold;
+    letter-spacing: 3px; color: #fff; }
+  .h-sub { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 4px; margin-top: 3px; }
+  .h-right { text-align: right; }
+  .h-count { font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.8; }
+  .sync-btn { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55);
+    font-size: 11px; padding: 5px 9px; border-radius: 6px; margin-top: 5px;
+    display: block; margin-left: auto; letter-spacing: 1px; }
+
+  /* Nav */
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px 8px; }
+  .month-lbl { font-size: 18px; font-family: Georgia,serif; font-weight: bold; color: #fff; }
+  .nav-btn { background: rgba(255,255,255,0.07); color: #fff; width: 36px; height: 36px;
+    border-radius: 50%; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+
+  /* Calendar */
+  .days-row { display: grid; grid-template-columns: repeat(7,1fr); padding: 0 12px; margin-bottom: 4px; }
+  .day-lbl { text-align: center; font-size: 10px; color: rgba(255,255,255,0.28);
+    font-weight: 700; letter-spacing: 1px; padding: 4px 0; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); padding: 0 12px; gap: 3px; }
+  .cal-cell { aspect-ratio: 1; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; border-radius: 10px; background: rgba(255,255,255,0.04);
+    border: 1px solid transparent; color: rgba(255,255,255,0.75); font-size: 15px;
+    -webkit-user-select: none; user-select: none; }
+  .cal-cell.today { background: rgba(27,79,138,0.25); border-color: rgba(27,79,138,0.5);
+    color: #7FB3E8; font-weight: 700; }
+  .cal-cell.selected { background: #1B4F8A; color: #fff; font-weight: 700; }
+  .cal-cell.empty { opacity: 0; pointer-events: none; }
+  .cal-dot { width: 5px; height: 5px; border-radius: 50%; background: #4CAF8A; margin-top: 2px; }
+
+  /* Empty state */
+  .empty-state { display: flex; flex-direction: column; align-items: center;
+    padding: 44px 20px; text-align: center; }
+  .empty-icon { font-size: 38px; margin-bottom: 12px; }
+  .empty-txt { color: rgba(255,255,255,0.28); font-size: 13px; line-height: 1.7; }
+
+  /* Bottom sheet */
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.72);
+    z-index: 200; display: flex; align-items: flex-end; justify-content: center; }
+  .overlay.hidden { display: none; }
+  .bottom-sheet { background: #0D1F38; border-radius: 20px 20px 0 0;
+    padding: 14px 18px 36px; width: 100%; max-width: 430px; max-height: 82vh; overflow-y: auto; }
+  .handle { width: 40px; height: 4px; background: rgba(255,255,255,0.15);
+    border-radius: 2px; margin: 0 auto 16px; }
+  .sheet-date { font-size: 19px; font-family: Georgia,serif; font-weight: bold;
+    color: #fff; margin-bottom: 2px; }
+  .sheet-sub { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+
+  /* Salida card */
+  .card { background: rgba(255,255,255,0.05); border-radius: 13px; padding: 14px 15px;
+    margin-bottom: 9px; border: 1px solid rgba(255,255,255,0.06); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; }
+  .card-hora { font-size: 26px; font-family: Georgia,serif; font-weight: bold;
+    color: #fff; line-height: 1; }
+  .card-hora-fin { font-size: 12px; color: rgba(255,255,255,0.32); margin-top: 3px; }
+  .card-plazas { font-size: 13px; margin-top: 3px; }
+  .plazas-ok { color: #4CAF8A; }
+  .plazas-low { color: #FFC107; }
+  .plazas-full { color: #FF6B6B; }
+  .controls { display: flex; align-items: center; gap: 10px; }
+  .ctrl-btn { width: 46px; height: 46px; border-radius: 50%; color: #fff;
+    font-size: 26px; font-weight: bold; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; -webkit-user-select: none; }
+  .ctrl-btn:disabled { background: rgba(255,255,255,0.05) !important; color: rgba(255,255,255,0.2); }
+  .ctrl-minus { background: rgba(200,60,60,0.85); }
+  .ctrl-plus { background: #2A7A4A; }
+  .ctrl-num { font-size: 20px; font-weight: bold; color: #fff; min-width: 28px; text-align: center; }
+  .cancel-btn { background: none; color: rgba(255,80,80,0.45); font-size: 11px;
+    margin-top: 6px; display: block; padding: 0; }
+
+  /* Add form */
+  .add-btn { width: 100%; padding: 13px 0; text-align: center;
+    background: rgba(27,79,138,0.18); border: 1px dashed rgba(27,79,138,0.6);
+    border-radius: 13px; color: #6BA3E0; font-size: 14px; margin-top: 6px; display: block; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .lbl { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 1px;
+    margin-bottom: 5px; display: block; }
+  .inp { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: #fff; padding: 12px 14px; font-size: 16px;
+    width: 100%; margin-bottom: 10px; }
+  .ok-btn { width: 100%; padding: 14px 0; text-align: center; background: #1B4F8A;
+    border-radius: 13px; color: #fff; font-size: 16px; font-weight: bold;
+    margin-bottom: 8px; display: block; }
+  .ghost-btn { width: 100%; padding: 11px 0; text-align: center; background: transparent;
+    color: rgba(255,255,255,0.3); font-size: 14px; display: block; }
+
+  /* Status bar */
+  .bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px; background: #07111F;
+    border-top: 1px solid rgba(255,255,255,0.07); padding: 12px 18px;
+    text-align: center; font-size: 11px; letter-spacing: 1px;
+    color: rgba(255,255,255,0.2); z-index: 100; transition: background 0.3s; }
+  .bar.saving { background: #1A4070; color: #fff; }
+  .bar.error { background: #5A1A1A; color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-row">
+    <div>
+      <div class="h-title">Y-OLÉ</div>
+      <div class="h-sub">SALIDAS ESPECIALES</div>
+    </div>
+    <div class="h-right">
+      <div class="h-count" id="hCount">0 salidas</div>
+    </div>
+  </div>
+</div>
+
+<!-- Nav mes -->
+<div class="nav-row">
+  <button class="nav-btn" onclick="changeMonth(-1)">‹</button>
+  <span class="month-lbl" id="monthLbl"></span>
+  <button class="nav-btn" onclick="changeMonth(1)">›</button>
+</div>
+
+<!-- Días -->
+<div class="days-row">
+  <div class="day-lbl">L</div><div class="day-lbl">M</div><div class="day-lbl">X</div>
+  <div class="day-lbl">J</div><div class="day-lbl">V</div><div class="day-lbl">S</div>
+  <div class="day-lbl">D</div>
+</div>
+<div class="cal-grid" id="calGrid"></div>
+<div class="empty-state" id="emptyState" style="display:none">
+  <div class="empty-icon">🗓</div>
+  <div class="empty-txt">Sin salidas programadas.<br>Pulsa cualquier día para añadir una.</div>
+</div>
+
+<!-- Panel día -->
+<div class="overlay hidden" id="overlay" onclick="overlayClick(event)">
+  <div class="bottom-sheet">
+    <div class="handle"></div>
+    <p class="sheet-date" id="sheetDate"></p>
+    <p class="sheet-sub" id="sheetSub"></p>
+    <div id="salidaCards"></div>
+    <div id="addSection">
+      <button class="add-btn" onclick="showAddForm()">+ Añadir salida</button>
+    </div>
+    <div id="addForm" style="display:none; margin-top:10px">
+      <div class="form-grid">
+        <div>
+          <label class="lbl">HORA INICIO</label>
+          <input type="time" class="inp" id="newHoraI" value="10:00">
+        </div>
+        <div>
+          <label class="lbl">HORA FIN</label>
+          <input type="time" class="inp" id="newHoraF" value="14:00">
+        </div>
+      </div>
+      <label class="lbl">PLAZAS</label>
+      <input type="number" class="inp" id="newPlazas" value="97" min="1" max="97">
+      <button class="ok-btn" onclick="confirmAdd()">Confirmar salida</button>
+      <button class="ghost-btn" onclick="hideAddForm()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<div class="bar" id="statusBar">CARTAGENA · MAR</div>
+
+<script>
+const API = "https://script.google.com/macros/s/AKfycbyEqgJrBI2tDNNoPZRXYJUMPHp_h_fVestssiKgkh-mCrTnPYHooSFJxzCi1ZuLguRO/exec";
+const MONTHS = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+let salidas = [];
+let viewYear, viewMonth, selectedDate;
+const today = new Date();
+
+function fmtDate(y,m,d){ return `${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`; }
+function todayStr(){ return fmtDate(today.getFullYear(), today.getMonth(), today.getDate()); }
+function forDate(d){ return salidas.filter(s => s.fecha===d && s.activa==="SI"); }
+
+// ── API ──────────────────────────────────────────────────
+function fetchSalidas() {
+  return new Promise((resolve, reject) => {
+    const cb = "yole_" + Date.now();
+    const script = document.createElement("script");
+    const timer = setTimeout(() => { cleanup(); reject(new Error("Timeout")); }, 12000);
+    function cleanup(){ clearTimeout(timer); delete window[cb]; script.remove(); }
+    window[cb] = (data) => { cleanup(); resolve(Array.isArray(data) ? data : []); };
+    script.onerror = () => { cleanup(); reject(new Error("Error de red")); };
+    script.src = API + "?callback=" + cb;
+    document.head.appendChild(script);
+  });
+}
+
+async function postSalidas(data) {
+  await fetch(API, { method:"POST", mode:"no-cors", body: JSON.stringify(data) });
+}
+
+async function save(updated) {
+  salidas = updated;
+  setStatus("saving");
+  try {
+    await postSalidas(updated);
+    setStatus("ok");
+  } catch {
+    setStatus("error", "Error al guardar");
+    setTimeout(() => setStatus("ok"), 3000);
+  }
+}
+
+function setStatus(type, msg) {
+  const bar = document.getElementById("statusBar");
+  bar.className = "bar";
+  if (type === "saving") { bar.classList.add("saving"); bar.textContent = "GUARDANDO EN LA HOJA…"; }
+  else if (type === "error") { bar.classList.add("error"); bar.textContent = (msg||"ERROR").toUpperCase(); }
+  else { bar.textContent = "CARTAGENA · MAR"; }
+}
+
+// ── Render ───────────────────────────────────────────────
+function renderCalendar() {
+  const grid = document.getElementById("calGrid");
+  grid.innerHTML = "";
+  const off = (new Date(viewYear, viewMonth, 1).getDay() + 6) % 7;
+  const tot = new Date(viewYear, viewMonth+1, 0).getDate();
+  document.getElementById("monthLbl").textContent = MONTHS[viewMonth] + " " + viewYear;
+
+  for (let i = 0; i < off; i++) {
+    const el = document.createElement("button");
+    el.className = "cal-cell empty"; grid.appendChild(el);
+  }
+  for (let d = 1; d <= tot; d++) {
+    const ds = fmtDate(viewYear, viewMonth, d);
+    const el = document.createElement("button");
+    el.className = "cal-cell";
+    if (ds === todayStr()) el.classList.add("today");
+    if (ds === selectedDate) el.classList.add("selected");
+    el.innerHTML = `<span>${d}</span>`;
+    if (forDate(ds).length > 0) {
+      const dot = document.createElement("div");
+      dot.className = "cal-dot"; el.appendChild(dot);
+    }
+    el.onclick = () => openDay(ds);
+    grid.appendChild(el);
+  }
+
+  const activasN = salidas.filter(s=>s.activa==="SI").length;
+  const mesPfx = `${viewYear}-${String(viewMonth+1).padStart(2,"0")}`;
+  const totalMes = salidas.filter(s=>s.activa==="SI"&&s.fecha?.startsWith(mesPfx)).length;
+  document.getElementById("hCount").textContent = `${activasN} total · ${totalMes} este mes`;
+
+  const empty = document.getElementById("emptyState");
+  empty.style.display = activasN === 0 && !selectedDate ? "flex" : "none";
+}
+
+function openDay(ds) {
+  selectedDate = ds;
+  renderCalendar();
+  const [y,m,d] = ds.split("-");
+  document.getElementById("sheetDate").textContent =
+    `${parseInt(d)} ${MONTHS[parseInt(m)-1]} ${y}`;
+  renderCards();
+  document.getElementById("overlay").classList.remove("hidden");
+  hideAddForm();
+}
+
+function renderCards() {
+  const list = forDate(selectedDate);
+  document.getElementById("sheetSub").textContent =
+    list.length === 0 ? "Sin salidas — pulsa + para añadir"
+    : `${list.length} salida${list.length>1?"s":""}`;
+
+  const container = document.getElementById("salidaCards");
+  container.innerHTML = "";
+  list.forEach((sal, idx) => {
+    const plazas = parseInt(sal.plazas_disponibles)||0;
+    const total = parseInt(sal.plazas_total)||97;
+    const plazasClass = plazas===0?"plazas-full": plazas<=10?"plazas-low":"plazas-ok";
+    const plazasTxt = plazas===0?"COMPLETO":`${plazas} / ${total} plazas`;
+    const horaFin = sal.hora_fin ? `<div class="card-hora-fin">hasta las ${sal.hora_fin}</div>` : "";
+
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="card-top">
+        <div>
+          <div class="card-hora">${sal.hora_inicio||sal.hora||"--:--"}</div>
+          ${horaFin}
+          <div class="card-plazas ${plazasClass}">${plazasTxt}</div>
+        </div>
+        <div class="controls">
+          <button class="ctrl-btn ctrl-minus" ${plazas<=0?"disabled":""} onclick="changePlaza(${idx},-1)">−</button>
+          <span class="ctrl-num">${plazas}</span>
+          <button class="ctrl-btn ctrl-plus" ${plazas>=total?"disabled":""} onclick="changePlaza(${idx},+1)">+</button>
+        </div>
+      </div>
+      <button class="cancel-btn" onclick="cancelSalida(${idx})">✕ cancelar esta salida</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// ── Acciones ─────────────────────────────────────────────
+function changeMonth(delta) {
+  viewMonth += delta;
+  if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+  if (viewMonth < 0)  { viewMonth = 11; viewYear--; }
+  renderCalendar();
+}
+
+function overlayClick(e) {
+  if (e.target === document.getElementById("overlay")) {
+    document.getElementById("overlay").classList.add("hidden");
+    selectedDate = null;
+    renderCalendar();
+  }
+}
+
+async function changePlaza(idx, delta) {
+  const list = forDate(selectedDate);
+  const t = list[idx];
+  if (!t) return;
+  const n = parseInt(t.plazas_disponibles) + delta;
+  const max = parseInt(t.plazas_total)||97;
+  if (n < 0 || n > max) return;
+  const gi = salidas.indexOf(t);
+  const updated = salidas.map((s,i) => i===gi ? {...s, plazas_disponibles:n} : s);
+  await save(updated);
+  renderCards(); renderCalendar();
+}
+
+async function cancelSalida(idx) {
+  const t = forDate(selectedDate)[idx];
+  const gi = salidas.indexOf(t);
+  const updated = salidas.map((s,i) => i===gi ? {...s, activa:"NO"} : s);
+  await save(updated);
+  document.getElementById("overlay").classList.add("hidden");
+  selectedDate = null;
+  renderCalendar();
+}
+
+function showAddForm() {
+  document.getElementById("addSection").style.display = "none";
+  document.getElementById("addForm").style.display = "block";
+}
+function hideAddForm() {
+  document.getElementById("addSection").style.display = "block";
+  document.getElementById("addForm").style.display = "none";
+}
+
+async function confirmAdd() {
+  const horaI = document.getElementById("newHoraI").value;
+  const horaF = document.getElementById("newHoraF").value;
+  const plazas = parseInt(document.getElementById("newPlazas").value)||97;
+  if (!horaI) return;
+  const n = { fecha:selectedDate, hora_inicio:horaI, hora_fin:horaF,
+    plazas_total:plazas, plazas_disponibles:plazas, activa:"SI" };
+  const updated = [...salidas, n].sort((a,b) =>
+    a.fecha.localeCompare(b.fecha)||a.hora_inicio.localeCompare(b.hora_inicio));
+  await save(updated);
+  hideAddForm(); renderCards(); renderCalendar();
+}
+
+// ── Init ─────────────────────────────────────────────────
+viewYear = today.getFullYear();
+viewMonth = today.getMonth();
+
+fetchSalidas()
+  .then(data => { salidas = data; renderCalendar(); })
+  .catch(() => { salidas = []; renderCalendar(); });
+
+renderCalendar();
+</script>
+</body>
+</html>
