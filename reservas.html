@@ -197,7 +197,7 @@ function fetchSalidas() {
     function cleanup(){ clearTimeout(timer); delete window[cb]; script.remove(); }
     window[cb] = (data) => { cleanup(); resolve(Array.isArray(data) ? data : []); };
     script.onerror = () => { cleanup(); reject(new Error("Error de red")); };
-    script.src = API + "?callback=" + cb;
+    script.src = API + "?callback=" + cb + "&t=" + Date.now();
     document.head.appendChild(script);
   });
 }
