@@ -400,11 +400,11 @@ button { cursor: pointer; border: none; background: none; }
 .paseos-footer-note strong { color: var(--white); font-weight: 600; }
 
 /* --- PASEOS SECTION ----------------------------------- */
-.paseos { background: #0f2035; }
+.paseos { background: #f5f0e8; }
 
 /* --- ESPECIALES --------------------------------------- */
 .especiales {
-    background: #0f2035;
+    background: #0a1628;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     overflow-x: hidden;
@@ -660,7 +660,7 @@ button { cursor: pointer; border: none; background: none; }
 }
 
 /* --- CONTACT ------------------------------------------ */
-.contact { background: var(--navy); }
+.contact { background: #f5f0e8; }
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1146,6 +1146,74 @@ button { cursor: pointer; border: none; background: none; }
     transform: none;
 }
 
+/* ===== LIGHT SECTIONS — Paseos & Contacto ============= */
+
+.paseos .section-title,
+.contact .section-title   { color: #0a1628; }
+
+.paseos .section-lead,
+.contact .section-lead    { color: rgba(10,22,40,0.7); }
+
+/* Price band */
+.paseos .prices-band,
+.contact .prices-band {
+    background: #ffffff;
+    border-color: #e0d8cc;
+    box-shadow: 0 2px 16px rgba(10,22,40,0.07);
+}
+.paseos .price-cell,
+.contact .price-cell      { border-right-color: #e0d8cc; background: #ffffff; }
+.paseos .price-cell:hover,
+.contact .price-cell:hover { background: #ede8df; }
+.paseos .pc-label,
+.contact .pc-label        { color: rgba(10,22,40,0.5); }
+.paseos .pc-amount,
+.contact .pc-amount       { color: #0a1628; }
+
+/* Meta chips — dark pill on cream */
+.paseos .meta-chip,
+.contact .meta-chip {
+    background: #0a1628;
+    color: #ffffff;
+    border: none;
+}
+.paseos .meta-chip svg,
+.contact .meta-chip svg   { color: rgba(255,255,255,0.7); }
+
+/* Embarque block */
+.paseos .embarque-block {
+    background: #ffffff;
+    border-color: #e0d8cc;
+}
+.paseos .embarque-row     { color: rgba(10,22,40,0.8); }
+.paseos .embarque-row svg { color: var(--ocean); }
+
+/* Directions button */
+.paseos .btn-directions,
+.contact .btn-directions  { background: #0a1628; color: #ffffff; }
+.paseos .btn-directions:hover,
+.contact .btn-directions:hover {
+    background: var(--gold);
+    color: #0a1628;
+    transform: translateY(-2px);
+}
+
+/* Paseos footer note */
+.paseos .paseos-footer-note             { border-color: #e0d8cc; color: rgba(10,22,40,0.55); }
+.paseos .paseos-footer-note strong      { color: #0a1628; }
+
+/* Contact grid */
+.contact .contact-grid {
+    background: #ffffff;
+    border-color: #e0d8cc;
+    box-shadow: 0 2px 16px rgba(10,22,40,0.07);
+}
+.contact .contact-card          { border-right-color: #e0d8cc; background: #ffffff; }
+.contact .contact-card:hover    { background: #ede8df; }
+.contact .contact-card p        { color: rgba(10,22,40,0.7); }
+.contact .contact-card a        { color: rgba(10,22,40,0.7); }
+.contact .contact-card a:hover  { color: #0a1628; }
+
 /* --- RESPONSIVE --------------------------------------- */
 @media (max-width: 1100px) {
     .especiales-grid,
@@ -1169,6 +1237,7 @@ button { cursor: pointer; border: none; background: none; }
     .contact-card:nth-child(4) { border-right: none; }
     .contact-card { border-bottom: 1px solid var(--border); }
     .contact-card:last-child { border-bottom: none; }
+    .contact .contact-card { border-bottom-color: #e0d8cc; }
 }
 
 @media (max-width: 768px) {
@@ -1178,12 +1247,12 @@ button { cursor: pointer; border: none; background: none; }
     .nav-menu {
         position: fixed;
         inset: 0 0 0 0;
-        padding-top: var(--nav-h);
+        padding-top: calc(var(--nav-h) + 2rem);
         flex-direction: column;
         background: rgba(10, 22, 40, 0.97);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         gap: 28px;
         opacity: 0;
@@ -1210,6 +1279,8 @@ button { cursor: pointer; border: none; background: none; }
     .price-cell:nth-child(2) { border-right: none; }
     .price-cell:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
     .price-cell:nth-child(4) { border-right: none; border-top: 1px solid var(--border); }
+    .paseos .price-cell:nth-child(3) { border-right-color: #e0d8cc; border-top-color: #e0d8cc; }
+    .paseos .price-cell:nth-child(4) { border-top-color: #e0d8cc; }
 
     .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
 
@@ -1250,6 +1321,7 @@ button { cursor: pointer; border: none; background: none; }
     .prices-band { grid-template-columns: 1fr; }
     .price-cell { border-right: none !important; border-bottom: 1px solid var(--border); }
     .price-cell:last-child { border-bottom: none; }
+    .paseos .price-cell { border-bottom-color: #e0d8cc; }
 
     .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
     .gi-tall, .gi-wide { grid-column: 1; grid-row: auto; }
