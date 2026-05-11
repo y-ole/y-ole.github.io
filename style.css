@@ -1177,7 +1177,8 @@ button { cursor: pointer; border: none; background: none; }
     .nav-menu { margin-left: 0; }
     .nav-menu {
         position: fixed;
-        inset: var(--nav-h) 0 0 0;
+        inset: 0 0 0 0;
+        padding-top: var(--nav-h);
         flex-direction: column;
         background: rgba(10, 22, 40, 0.97);
         backdrop-filter: blur(20px);
@@ -1199,7 +1200,7 @@ button { cursor: pointer; border: none; background: none; }
     .nav-link {
         font-size: 1rem;
         letter-spacing: 0.08em;
-        white-space: normal;
+        white-space: nowrap;
         text-align: center;
         padding: 6px 12px;
     }
