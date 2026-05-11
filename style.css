@@ -1190,9 +1190,16 @@ button { cursor: pointer; border: none; background: none; }
 
 /* Directions button */
 .paseos .btn-directions,
-.contact .btn-directions  { background: #0a1628; color: #ffffff; }
+.contact .btn-directions,
+.contact .contact-card .btn-directions {
+    background: #0a1628;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+}
 .paseos .btn-directions:hover,
-.contact .btn-directions:hover {
+.contact .btn-directions:hover,
+.contact .contact-card .btn-directions:hover {
     background: var(--gold);
     color: #0a1628;
     transform: translateY(-2px);
